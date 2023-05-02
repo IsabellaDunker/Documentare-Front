@@ -40,16 +40,15 @@ fetch('http://localhost:8000/products')
   .then((json) => {
     
   // 2. Create a variable to store HTML table headers
-    let li = `<tr><th>ID</th><th>Nome</th><th>Preço</th><th>Marca</th><th>Quantidade</th><th>Descrição</th><th>Área</th></tr>`;
+    let li = `<tr><th>Produto</th><th>Nome</th><th>Preço</th><th>Marca</th><th>Descrição</th><th>Área</th></tr>`;
 
     // 3. Loop through each data and add a table row
-    json.forEach((products) => {
+    json.forEach((products,i) => {
       li += `<tr>
-        <td>${products.id}</td>
+        <td>${i+1}</td>
         <td>${products.name}</td>
         <td>${products.price}</td>
         <td>${products.brand}</td>
-        <td>${products.quantity}</td>
         <td>${products.description}</td>
         <td>${products.area}</td>
       </tr>`;
