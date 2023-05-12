@@ -2,11 +2,36 @@
 
 <head>
   <title>Página de produtos</title>
+  <script src="https://kit.fontawesome.com/f01197c0fa.js" crossorigin="anonymous"></script>
+  <script src="../js/Products.js"></script>
 </head>
 
 <div class="container">
   <table id="products"></table>
+  <button type="submit" id="open" onclick="document.getElementById('id01').style.display='block'">Novo Produto+</button>
 </div>
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+<!-- Modal Content Add Product -->
+<form class="modal-content animate" action="/prodctsPage.html">
+  
+  <div class="container">
+    <div class="icon">
+      <i class="fa-solid fa-laptop fa-2x"></i>
+    </div>
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <div>
+      <button type="submit" class="add" onclick="postJSON(data)">Adicionar</button>
+    </div>
+  </div>
+</form>
 
 </html>
 
@@ -30,56 +55,69 @@ body {
       margin-right: auto;
       text-align: center;
     }
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 50%;
+}
+.container{
+  margin: 20px;
+}
+.icon{
+  margin-bottom: 20px;
+}
+.add{
+  margin: 20px;
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
 </style>
-
-<script>
-  //GET request using fetch()
-fetch('http://localhost:8000/products')
-  // Converting received data to JSON
-  .then((response) => response.json())
-  .then((json) => {
-    
-  // 2. Create a variable to store HTML table headers
-    let li = `<tr><th>Produto</th><th>Nome</th><th>Preço</th><th>Marca</th><th>Descrição</th><th>Área</th></tr>`;
-
-    // 3. Loop through each data and add a table row
-    json.forEach((products,i) => {
-      li += `<tr>
-        <td>${i+1}</td>
-        <td>${products.name}</td>
-        <td>${products.price}</td>
-        <td>${products.brand}</td>
-        <td>${products.description}</td>
-        <td>${products.area}</td>
-      </tr>`;
-    });
-
-    // 4. DOM Display result
-    document.getElementById("products").innerHTML = li;
-  });
-
-// main.js
-
-// 5. POST request using fetch()
-fetch("http://localhost:8000/products", {
-  // 6. Adding method type
-  method: "POST",
-
-  // 7. Adding body or contents to send JSON Stringify
-  body: JSON.stringify({
-    title: "foo",
-    body: "bar",
-    userId: 1
-  }),
-
-  // 8. Adding headers to the request
-  headers: {
-    "Content-type": "application/json; charset=UTF-8"
-  }
-})
-  // 9. Converting to JSON
-  .then((response) => response.json())
-
-  // 10. Displaying results to console
-  .then((json) => console.log(json));
-</script>
