@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Documentare</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css//styleTabelaProdutos.css">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="../pages/MainPage.html">Documentare</a>
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+      <ul class="nav-list">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+      <td class="acao">
+        <a class="bt" href="/src/pages/UserPage.html"><i class='bx bx-user'></i></a>
+      </td>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="header">
+      <span>Produtos</span>
+      <button onclick="openModal()" id="new">Incluir</i></button>
+    </div>
+
+    <div class="divTable">
+      <input id="searchbar" onkeyup="search()" type="text"
+        name="search" placeholder="Pesquisar">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Marca</th>
+            <th>Descrição</th>
+            <th>Área</th>
+            <th class="acao">Editar</th>
+            <th class="acao">Excluir</th>
+            <th class="acao">Detalhar</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+    
+
+    <div class="modal-container">
+      <div class="modal">
+        <form>
+          <label for="m-nome">Nome</label>
+          <input id="m-nome" type="text" required />
+  
+          <label for="m-preco">Preço</label>
+          <input id="m-preco" type="number" required />
+  
+          <label for="m-marca">Marca</label>
+          <input id="m-marca" type="text" required />
+
+          <label for="m-descricao">Descrição<optgroup></optgroup></label>
+          <input id="m-descricao" type="text" required />
+
+          <label for="m-area">Área</label>
+          <input id="m-area" type="text" required />
+          <button id="btnSalvar">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="../js/scriptTabelaProdutos.js"></script>
+  <script src="../js/navbar.js"></script>
+</body>
+
+</html>

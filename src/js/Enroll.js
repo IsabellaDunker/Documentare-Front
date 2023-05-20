@@ -1,4 +1,4 @@
-async function Login(){
+async function Enroll(){
 
   let email = await document.getElementById('email').value;
   let password = await document.getElementById('pass').value;
@@ -11,14 +11,12 @@ async function Login(){
     json.map((user) => {
       console.log(user)
       if(`${user.email}` === email){
-        console.log('Login!')
-        location.href = './MainPage.html'
+          document.getElementById("erro").innerHTML = `Email já cadastrado`;
+      } if(email === '') {
+        document.getElementById("erro").innerHTML = `Campo email é obrigatório`;
       } else {
-        document.getElementById("erro").innerHTML = `Email ou senha incorreta`;
+          
       }
     }) 
-    console.log(email)
-    console.log(password)
-
   });
 }
