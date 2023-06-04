@@ -39,12 +39,55 @@ button {
 }
 
 .container {
-  width: 90%;
-  height: 80%;
+  width: 85%;
+  height: 70%;
   border-radius: 10px;
   background: white;
   margin-top: 50px;
   margin-left: 5%;
+}
+
+.sidebar {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  width: 12%;
+}
+
+.form-control {
+  font-family: system-ui, sans-serif;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+  margin-bottom: 6px;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  border-radius: 0.15em;
+}
+
+input[type="checkbox"]::before {
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.title {
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.divTitle {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background-color:lightgray;
+}
+
+.check {
+  display: inline-flex;
 }
 
 .header {
@@ -117,7 +160,7 @@ tr {
 tbody tr td {
   vertical-align: text-top;
   padding: 6px;
-  max-width: 50px;
+  max-width: 80px;
 }
 
 thead tr th {
@@ -131,7 +174,7 @@ tbody tr {
 }
 
 thead tr th.acao {
-  width: 100px!important;
+  width: 80px;
   text-align: center;
 }
 
@@ -142,10 +185,6 @@ tbody tr td.acao {
 .content {
   display: none;
   max-width: 500px;
-}
-
-.content-td {
-  border-bottom : none;
 }
 
 @media (max-width: 700px) {

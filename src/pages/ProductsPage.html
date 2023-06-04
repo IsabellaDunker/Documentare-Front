@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css//styleTabelaProdutos.css">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +32,40 @@
     </nav>
   </header>
 
-  <div class="container">
+  <aside class="sidebar">
+    <div class="divTitle">
+      <h5 class="title">RAM</h5>
+    </div>
+      <label  class="form-control">
+        <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="ram"  value= "4GB" />4GB
+      </label>
+      <label  class="form-control">
+        <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="ram"  value= "8GB" />8GB
+      </label>
+      <label  class="form-control">
+        <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="ram"  value= "16GB" />16GB
+      </label>
+      <div class="divTitle">
+        <h5 class="title">Sistema Operacional</h5>
+      </div>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Windows" />Windows
+        </label>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Linux" />Linux
+        </label>
+        <div class="divTitle">
+        <h5 class="title">Processador</h5>
+      </div>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="processador"  value= "Intel" />Intel
+        </label>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="processador"  value= "Ryzen" />Ryzen
+        </label>
+    </aside>
+
+  <div class="container" style="margin-left:15%">
     <div class="header">
       <span>Produtos</span>
       <button onclick="openModal()" id="new">Incluir</i></button>
@@ -40,18 +74,19 @@
     <div class="divTable">
       <input id="searchbar" onkeyup="search()" type="text"
         name="search" placeholder="Pesquisar">
-      <table>
+      <table id="le-Table-1">
         <thead>
           <tr>
             <th></th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Marca</th>
-            <th>Descrição</th>
-            <th>Área</th>
+            <th onclick="sortTable(0)">Nome</th>
+            <th onclick="sortTable(1)">Preço</th>
+            <th onclick="sortTable(2)">Marca</th>
+            <th onclick="sortTable(3)">Área</th>
+            <th onclick="sortTable(4)">Ram</th>
+            <th onclick="sortTable(5)">Sistema Operacional</th>
+            <th onclick="sortTable(6)">Processador</th>
             <th class="acao">Editar</th>
             <th class="acao">Excluir</th>
-            <th class="acao">Detalhar</th>
           </tr>
         </thead>
         <tbody>
