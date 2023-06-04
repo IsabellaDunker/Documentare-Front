@@ -40,11 +40,32 @@ button {
 
 .container {
   width: 85%;
-  height: 70%;
+  height: 80%;
   border-radius: 10px;
   background: white;
   margin-top: 50px;
   margin-left: 5%;
+}
+
+#le-Table-1	th:hover {
+  background-color: #e8e8e8;
+}
+
+#le-Table-1 tr:hover{
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+#le-Input-1 {
+  background-image: url('https://c2.staticflickr.com/8/7907/33127467968_2b7f7dd01c_o.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+	background-size: 25px 25px;
+  width: 300px;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }
 
 .sidebar {
@@ -142,6 +163,7 @@ table {
   padding:15px;
   border-radius: 10px;
 }
+
 
 input[type=text] {
    width: 50%;

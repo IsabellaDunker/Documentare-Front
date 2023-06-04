@@ -49,7 +49,7 @@
         <h5 class="title">Sistema Operacional</h5>
       </div>
         <label  class="form-control">
-          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Windows" />Windows
+          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Windows 10 Pro 64bits" />Windows
         </label>
         <label  class="form-control">
           <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Linux" />Linux
@@ -58,22 +58,26 @@
         <h5 class="title">Processador</h5>
       </div>
         <label  class="form-control">
-          <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="processador"  value= "Intel" />Intel
+          <input type='checkbox' onclick='return filter_processador(this);' name='filter'  id="processador"  value= "i3" />i3
         </label>
         <label  class="form-control">
-          <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="processador"  value= "Ryzen" />Ryzen
+          <input type='checkbox' onclick='return filter_processador(this);' name='filter'  id="processador"  value= "i5" />i5
+        </label>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_processador(this);' name='filter'  id="processador"  value= "i7" />i7
         </label>
     </aside>
 
   <div class="container" style="margin-left:15%">
     <div class="header">
       <span>Produtos</span>
-      <button onclick="openModal()" id="new">Incluir</i></button>
+      <button onclick="openModal(false)" id="new">Incluir</i></button>
     </div>
 
     <div class="divTable">
       <input id="searchbar" onkeyup="search()" type="text"
         name="search" placeholder="Pesquisar">
+      <p class="results">teste</p>
       <table id="le-Table-1">
         <thead>
           <tr>
@@ -82,7 +86,7 @@
             <th onclick="sortTable(1)">Preço</th>
             <th onclick="sortTable(2)">Marca</th>
             <th onclick="sortTable(3)">Área</th>
-            <th onclick="sortTable(4)">Ram</th>
+            <th onclick="sortTable(4)">RAM</th>
             <th onclick="sortTable(5)">Sistema Operacional</th>
             <th onclick="sortTable(6)">Processador</th>
             <th class="acao">Editar</th>
@@ -108,15 +112,18 @@
           <label for="m-marca">Marca</label>
           <input id="m-marca" type="text" required/>
 
-          <label for="m-descricao">Descrição</label>
-          <input id="m-descricao" type="text" required/>
-
           <label for="m-area">Área</label>
           <input id="m-area" type="text" required/>
 
-          <label for="m-detail">Detalhes</label>
-          <input id="m-detail" type="text" required/>
-          <button id="btnSalvar">Salvar</button>
+          <label for="m-so">Sistema Operacional</label>
+          <input id="m-so" type="text" required/>
+
+          <label for="m-ram">Memória RAM</label>
+          <input id="m-ram" type="text" required/>
+
+          <label for="m-pro">Processador</label>
+          <input id="m-pro" type="text" required/>
+          <button id="btnSalvar" type="button">Salvar</button>
         </form>
       </div>
     </div>
