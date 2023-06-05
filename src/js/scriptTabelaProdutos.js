@@ -101,14 +101,14 @@ function insertItem(products, index) {
   tr.classList.add('product');
   
   tr.innerHTML = `
-      <td></td>
+      <td>  </td>
       <td>${products[index].name}</td>
       <td>R$${products[index].price},00</td>
       <td>${products[index].brand}</td>
       <td>${products[index].area}</td>
       <td>${products[index].ram}</td>
       <td>${products[index].so}</td>
-      <t>${products[index].processador}</t>
+      <td>${products[index].processador}</td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit'></i></button>
     </td>
@@ -155,7 +155,7 @@ function filter_so(box) {
     $('#le-Table-1 tr').each(function (i, row) {
       var $tds = $(this).find('td')
       if ($tds.length) {
-       var type = $tds[6].innerText;
+       var type = $tds[6].innerText.slice(0,7)
        console.log(type)
        if(!(type && all_checked_types.indexOf(type) >= 0)) {
          $(this).hide();
@@ -231,7 +231,7 @@ function filter_so(box) {
     $('#le-Table-1 tr').each(function (i, row) {
       var $tds = $(this).find('td')
       if ($tds.length) {
-       var type = $tds[7].innerText;
+       var type = $tds[7].innerText.slice(18,20)
        console.log(type)
        if(!(type && all_checked_types.indexOf(type) >= 0)) {
          $(this).hide();
