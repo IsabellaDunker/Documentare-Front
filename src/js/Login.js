@@ -12,7 +12,7 @@ async function Login(){
       console.log(user)
       if(`${user.email}` === email){
         console.log('Login!')
-        location.href = './MainPage.html'
+        location.href = './ProductsPage.html'
       } else {
         document.getElementById("erro").innerHTML = `Email ou senha incorreta`;
       }

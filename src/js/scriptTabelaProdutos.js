@@ -15,25 +15,30 @@ let id
 // 5. POST request using fetch()
 async function postJSON(data) {
   try {
-    fetch("http://localhost:8000/products", {
-      method: "POST",
-      body: JSON.stringify(data),
-    }).then((response) => response.json())
-
-    // 10. Displaying results to console
-    .then((json) => console.log(json));
-  } catch (error) {
+    console.log(data)
     console.log(JSON.stringify(data))
+    await fetch("http://localhost:8000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(data),
+    }).then((response) => response.text())
+      .then((json) => console.log(json));
+  } catch (error) {
     console.error("Error:", error);
   }
 }
 
 async function putJSON(data) {
   try {
-    fetch("http://localhost:8000/products/:id", {
+    console.log(data)
+    console.log(JSON.stringify(data))
+    fetch(`http://localhost:8000/products/${data.id}`, {
       method: "PUT",
       body: JSON.stringify(data),
-    }).then((response) => response.json())
+    }).then((response) => response.text())
 
     // 10. Displaying results to console
     .then((json) => console.log(json));
@@ -101,7 +106,7 @@ function insertItem(products, index) {
   tr.classList.add('product');
   
   tr.innerHTML = `
-      <td>  </td>
+      <td></td>
       <td>${products[index].name}</td>
       <td>R$${products[index].price},00</td>
       <td>${products[index].brand}</td>
@@ -120,22 +125,24 @@ function insertItem(products, index) {
   tbody.appendChild(tr)
 }
 
+let results = document.getElementById('results')
+
 function search() {
   let input = document.getElementById('searchbar').value.toLowerCase()
   let x = document.getElementsByClassName('product')
-  let y = document.getElementsByClassName('results')
-  let results = 0
+  var rowCount = $('#le-Table-1 >tbody >tr:visible').length;
 
   for (i = 0; i < x.length; i++) { 
       if (x[i].innerHTML.toLowerCase().includes(input)) {
           x[i].style.display="table-row";
-          results++
-          
-            y.innerHTML = `${results}`
-          
+          results.innerHTML =  'Encontrados ' +rowCount + ' produtos'
       } else {
           x[i].style.display='none'
       }
+  }
+
+  if(rowCount === 0){
+    results.innerHTML = 'Nenhum resultado encontrado para essa pesquisa'
   }
 }
 
@@ -155,22 +162,23 @@ function filter_so(box) {
     $('#le-Table-1 tr').each(function (i, row) {
       var $tds = $(this).find('td')
       if ($tds.length) {
-       var type = $tds[6].innerText.slice(0,7)
-       console.log(type)
-       if(!(type && all_checked_types.indexOf(type) >= 0)) {
+       var windows = $tds[6].innerText.slice(0,7)
+       var linux = $tds[6].innerText.slice(0,5)
+       if(!(windows && all_checked_types.indexOf(windows) >= 0 || linux && all_checked_types.indexOf(linux) >= 0)) {
          $(this).hide();
         }
         else {
          $(this).show();
         }
        }
+       
      });
      
    }
    else {
      $('#le-Table-1 tr').each(function (i, row) {
        var $tds = $(this).find('td'),
-       type = $tds.eq(6).text();
+       windows = $tds.eq(6).text();
        $(this).show();
       });
    }
@@ -323,6 +331,25 @@ function sort(products, index){
     }
   }
 
+function generatePDF(){
+  var doc = new jsPDF()
+  
+  doc.autoTable({
+    head:[[
+      'Nome', 'Preço', 'Marca', 'Área', 'Sistema Operacional', 'Memória RAM', 'Processador'
+    ]],
+    body:product.map(({
+      name, price, brand, area, so, ram, processador
+    }) => {
+      return [
+        name, price, brand, area, so, ram, processador
+      ]
+    })
+  })
+  
+  doc.save('listaProdutos.pdf')
+}
+
 function detailItem(index){
     let content = document.getElementsByClassName('content');
     
@@ -351,8 +378,7 @@ function saveItem(index) {
     putJSON(product[index])
   } else {
     product.push({'name': sNome.value, 'price': parseFloat(sPreco.value), 'brand': sMarca.value, 'description': 'Funcionando corretamente', 'area': sArea.value, 'so': sOpera.value,'ram': sRam.value,'processador': sProce.value})
-    postJSON(product.slice(-1))
-    console.log(product.slice(-1))
+    postJSON(product.slice(-1)[0])
   }
   
   

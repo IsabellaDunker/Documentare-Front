@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css//styleTabelaProdutos.css">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.2.3/jspdf.plugin.autotable.min.js"></script>
   <script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
@@ -15,19 +17,8 @@
   <header>
     <nav>
       <a class="logo" href="../pages/MainPage.html">Documentare</a>
-      <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
-      <ul class="nav-list">
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Produtos</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
       <td class="acao">
-        <a class="bt" href="/src/pages/UserPage.html"><i class='bx bx-user'></i></a>
+        <a class="bt" href="./UserPage.html"><i class='bx bx-user'></i></a>
       </td>
     </nav>
   </header>
@@ -52,7 +43,7 @@
           <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Windows" />Windows
         </label>
         <label  class="form-control">
-          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Linux  " />Linux
+          <input type='checkbox' onclick='return filter_so(this);' name='filter'  id="so"  value= "Linux" />Linux
         </label>
         <div class="divTitle">
         <h5 class="title">Processador</h5>
@@ -77,18 +68,20 @@
     <div class="divTable">
       <input id="searchbar" onkeyup="search()" type="text"
         name="search" placeholder="Pesquisar">
-      <p class="results">teste</p>
+      <div>
+        <p id="results"></p>
+      </div>
       <table id="le-Table-1">
         <thead>
           <tr>
             <th></th>
-            <th onclick="sortTable(0)">Nome</th>
-            <th onclick="sortTable(1)">Preço</th>
-            <th onclick="sortTable(2)">Marca</th>
-            <th onclick="sortTable(3)">Área</th>
-            <th onclick="sortTable(4)">RAM</th>
-            <th onclick="sortTable(5)">Sistema Operacional</th>
-            <th onclick="sortTable(6)">Processador</th>
+            <th onclick="sortTable(1)">Nome</th>
+            <th onclick="sortTable(2)">Preço</th>
+            <th onclick="sortTable(3)">Marca</th>
+            <th onclick="sortTable(4)">Área</th>
+            <th onclick="sortTable(5)">RAM</th>
+            <th onclick="sortTable(6)">Sistema Operacional</th>
+            <th onclick="sortTable(7)">Processador</th>
             <th class="acao">Editar</th>
             <th class="acao">Excluir</th>
           </tr>
@@ -96,6 +89,9 @@
         <tbody>
         </tbody>
       </table>
+      <div class="generate-pdf">
+        <button type="button" class="generate-pdf-bt" onclick="generatePDF()">Gerar PDF</button>
+      </div> 
 
     </div>
     
