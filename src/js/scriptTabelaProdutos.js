@@ -15,8 +15,6 @@ let id
 // 5. POST request using fetch()
 async function postJSON(data) {
   try {
-    console.log(data)
-    console.log(JSON.stringify(data))
     await fetch("http://localhost:8000/products", {
       method: "POST",
       headers: {
@@ -29,22 +27,25 @@ async function postJSON(data) {
   } catch (error) {
     console.error("Error:", error);
   }
+  location.reload();
 }
 
 async function putJSON(data) {
   try {
     console.log(data)
-    console.log(JSON.stringify(data))
     fetch(`http://localhost:8000/products/${data.id}`, {
       method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
       body: JSON.stringify(data),
     }).then((response) => response.text())
-
-    // 10. Displaying results to console
     .then((json) => console.log(json));
   } catch (error) {
     console.error("Error:", error);
   }
+  location.reload();
 }
 
 function openModal(edit = false, index = 0) {
@@ -89,14 +90,16 @@ function editItem(index) {
   openModal(true, index)
 }
 
-async function deleteItem(index) {
-  const res = await fetch('http://localhost:8000/products/:id', {
-    method: "delete",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(index),
-  })
-  const resResult = await res.json();
-  console.log(resResult);
+async function deleteItem(data) {
+  try {
+    fetch(`http://localhost:8000/products/${data.id}`, {
+      method: "DELETE",
+    }).then((response) => response.text())
+    .then((json) => console.log(json));
+  } catch (error) {
+    console.error("Error:", error);
+  }
+  location.reload();
 }
 
 function insertItem(products, index) {
@@ -239,7 +242,7 @@ function filter_so(box) {
     $('#le-Table-1 tr').each(function (i, row) {
       var $tds = $(this).find('td')
       if ($tds.length) {
-       var type = $tds[7].innerText.slice(18,20)
+       var type = $tds[7].innerText.slice(11,13)
        console.log(type)
        if(!(type && all_checked_types.indexOf(type) >= 0)) {
          $(this).hide();
@@ -361,7 +364,7 @@ function detailItem(index){
   
 }
 
-function saveItem(index) {
+async function saveItem(index) {
   if (sNome.value == '' || sPreco.value == '' || sMarca.value == '' || sRam.value == '' || sArea.value == '') {
     return
   }
@@ -381,10 +384,7 @@ function saveItem(index) {
     postJSON(product.slice(-1)[0])
   }
   
-  
-
   modal.classList.remove('active')
-  loadItens()
 }
 
 function loadItens() {

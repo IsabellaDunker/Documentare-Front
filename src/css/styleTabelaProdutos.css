@@ -23,15 +23,6 @@ button {
   cursor: pointer;
 }
 
-.generate-pdf-bt {
-  padding: 10px;
-  border-radius: 18px;
-  background-color: #4158d0;
-  color: white;
-  margin-top: 20px;
-}
-
-
 .bt {
   border: none;
   outline: none;
@@ -125,7 +116,6 @@ input[type="checkbox"]::before {
   min-height: 70px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin: auto 12px;
 }
 
@@ -142,6 +132,21 @@ input[type="checkbox"]::before {
   border: none;
   color: white;
   background-color: rgba(87,184,70, 0.8);
+  margin-right: 30px;
+}
+
+.generate-pdf-bt {
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4158d0;
+  color: white;
+}
+
+.buttonsNew {
+  position: absolute;
+  right: 0;
 }
 
 .divTable {

@@ -36,6 +36,9 @@
       <label  class="form-control">
         <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="ram"  value= "16GB" />16GB
       </label>
+      <label  class="form-control">
+        <input type='checkbox' onclick='return filter_type(this);' name='filter'  id="ram"  value= "32GB" />32GB
+      </label>
       <div class="divTitle">
         <h5 class="title">Sistema Operacional</h5>
       </div>
@@ -57,12 +60,18 @@
         <label  class="form-control">
           <input type='checkbox' onclick='return filter_processador(this);' name='filter'  id="processador"  value= "i7" />i7
         </label>
+        <label  class="form-control">
+          <input type='checkbox' onclick='return filter_processador(this);' name='filter'  id="processador"  value= "i9" />i9
+        </label>
     </aside>
 
   <div class="container" style="margin-left:15%">
     <div class="header">
       <span>Produtos</span>
-      <button onclick="openModal(false)" id="new">Incluir</i></button>
+      <div class="buttonsNew">
+        <button type="button" class="generate-pdf-bt" onclick="generatePDF()">Gerar PDF</button>
+      <button type="submit" onclick="openModal(false)" id="new">Incluir</i></button>
+      </div> 
     </div>
 
     <div class="divTable">
@@ -89,9 +98,6 @@
         <tbody>
         </tbody>
       </table>
-      <div class="generate-pdf">
-        <button type="button" class="generate-pdf-bt" onclick="generatePDF()">Gerar PDF</button>
-      </div> 
 
     </div>
     
