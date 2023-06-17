@@ -21,4 +21,9 @@ async function Login(){
     console.log(password)
 
   });
+
+}
+
+async function Forgot(){
+  localtion.href = './ForgotPage.html'
 }

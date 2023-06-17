@@ -138,7 +138,7 @@ function search() {
   for (i = 0; i < x.length; i++) { 
       if (x[i].innerHTML.toLowerCase().includes(input)) {
           x[i].style.display="table-row";
-          results.innerHTML =  'Encontrados ' +rowCount + ' produtos'
+          results.innerHTML = rowCount + ' produtos encontrados'
       } else {
           x[i].style.display='none'
       }

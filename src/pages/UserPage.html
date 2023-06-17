@@ -11,7 +11,7 @@
 
 <header>
   <nav>
-    <a class="logo" href="../pages/MainPage.html">Documentare</a>
+    <a class="logo" href="#">Documentare</a>
     <td class="acao">
       <a class="bt" href="/src/pages/UserPage.html"><i class='bx bx-user'></i></a>
     </td>
@@ -19,10 +19,34 @@
 </header>
 
 <div class="container">
-  <img src="avatar.jpg" alt="Avatar" class="avatar">
-  <h1>Nome do Usuário</h1>
-  <p>Email</p>
-  <p>Idade</p>
+  <a class="avatar" href="#"><i class='bx bx-user'></i></a>
+  <div class="box">
+    <h3>Informações básicas</h3>
+    <div class="headers">
+      <p>Nome</p>
+      <hr>
+      <p>Data de nascimento</p>
+    </div>
+    <div class="info">
+      <p id="h1">nome</p>
+      <hr>
+      <p>Data de nascimento</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h4>Informações de contato</h4>
+    <div class="headers">
+      <p>Email</p>
+      <hr>
+      <p>Telefone</p>
+    </div>
+    <div class="info">
+      <p id="email"></p>
+      <hr>
+      <p id="tel">34 9999-9999</p>
+    </div>
+  </div>
   <button>Editar Perfil</button>
 </div>
 
@@ -34,10 +58,18 @@
 }
 
 .avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+
+.avatar i {
+  font-size: 150px;
+  color: black;
   margin: 20px auto;
+}
+
+.avatar i:first-child {
+  margin-right: 10px;
 }
 
 h1 {
@@ -53,20 +85,32 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
+
+.headers {
+    width: 40%;
+    float: left;
+    text-align: left;
+    padding: 20px;
+    margin-left: 30px;
+}  
+
+.info {
+    width: 60%;
+    padding: 20px;
+    text-align: left;
+    border: 0.5px solid black;
+    margin-left: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}  
 </style>
 
 <script>
-let users
 
 function insertUser(users, index) {
-  let tr = document.createElement('tr')
-
-  tr.innerHTML = `
-      <td>${index+1}</td>
-      <td>Isabella</td>
-      <td>${user.email}</td>
-  `
-  tbody.appendChild(tr)
+  console.log(users.email)
+  document.getElementById('h1').innerHTML = 'Isabella Dunker'
+  document.getElementById('email').innerHTML = `${users.email}`
 }
 
 function loadUsers() {
@@ -74,7 +118,6 @@ function loadUsers() {
   // Converting received data to JSON
   .then((response) => response.json())
   .then((json) => {
-    tbody.innerHTML = ''
     json.forEach((users, index) => {
     insertUser(users, index)
     })
