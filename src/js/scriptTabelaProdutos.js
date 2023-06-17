@@ -28,6 +28,7 @@ async function postJSON(data) {
     console.error("Error:", error);
   }
   location.reload();
+  alert('Produto criado com sucesso!')
 }
 
 async function putJSON(data) {
@@ -90,16 +91,17 @@ function editItem(index) {
   openModal(true, index)
 }
 
-async function deleteItem(data) {
+async function deleteItem(index) {
+  alert('Essa ação é permanente, tem certeza que deseja excluir?')
   try {
-    fetch(`http://localhost:8000/products/${data.id}`, {
+    fetch(`http://localhost:8000/products/${product[index].id}`, {
       method: "DELETE",
     }).then((response) => response.text())
     .then((json) => console.log(json));
   } catch (error) {
     console.error("Error:", error);
   }
-  location.reload();
+  location.reload()
 }
 
 function insertItem(products, index) {
@@ -121,7 +123,7 @@ function insertItem(products, index) {
       <button onclick="editItem(${index})"><i class='bx bx-edit'></i></button>
     </td>
     <td class="acao">
-      <button onclick="deleteItem(${products[index].id})"><i class='bx bx-trash'></i></button>
+      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
     </td>
   `
 
