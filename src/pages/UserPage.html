@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/styleTabelaProdutos.css">
+  <link rel="stylesheet" href="../css/user.css">
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -22,88 +22,35 @@
   <a class="avatar" href="#"><i class='bx bx-user'></i></a>
   <div class="box">
     <h3>Informações básicas</h3>
-    <div class="headers">
-      <p>Nome</p>
-      <hr>
-      <p>Data de nascimento</p>
-    </div>
-    <div class="info">
-      <p id="h1">nome</p>
-      <hr>
-      <p>Data de nascimento</p>
+    <div class="basicInfo">
+      <div class="h1">
+        <p style="font-size: 14px; color: grey;">Nome</p>
+        <p style="font-size: 14px; color: grey;">Data de nascimento</p>
+      </div>
+      <div class="h1">
+        <p id="h1">Isabella Dunker</p>
+        <p>24/08/2002</p>
+      </div>
     </div>
   </div>
 
   <div class="box">
     <h4>Informações de contato</h4>
-    <div class="headers">
-      <p>Email</p>
-      <hr>
-      <p>Telefone</p>
-    </div>
-    <div class="info">
-      <p id="email"></p>
-      <hr>
-      <p id="tel">34 9999-9999</p>
+    <div class="contactInfo">
+      <div class="contact">
+        <p style="font-size: 14px; color: grey;">Email</p>
+        <p style="font-size: 14px; color: grey;">Telefone</p>
+      </div>
+      <div class="contact">
+        <p id="email">isabelladunker@gmail.com</p>
+        <p id="tel">(34) 9999-9999</p>
+      </div>
     </div>
   </div>
   <button>Editar Perfil</button>
 </div>
 
 </html>
-
-<style>
-  .container {
-  text-align: center;
-}
-
-.avatar {
-  border: none;
-  outline: none;
-}
-
-.avatar i {
-  font-size: 150px;
-  color: black;
-  margin: 20px auto;
-}
-
-.avatar i:first-child {
-  margin-right: 10px;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.headers {
-    width: 40%;
-    float: left;
-    text-align: left;
-    padding: 20px;
-    margin-left: 30px;
-}  
-
-.info {
-    width: 60%;
-    padding: 20px;
-    text-align: left;
-    border: 0.5px solid black;
-    margin-left: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}  
-</style>
 
 <script>
 
